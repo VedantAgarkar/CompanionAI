@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Rocket, Briefcase, Shrub, Shield, Zap, Layout } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import Navbar from './Navbar';
+import DarkVeil from './DarkVeil';
 
 const LandingPage = ({ onStart, onNavigate }) => {
   const { t } = useTranslation();
@@ -13,9 +14,21 @@ const LandingPage = ({ onStart, onNavigate }) => {
 
       {/* Hero Section */}
       <section className="relative pt-20 pb-32 px-6">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-blue-600/5 blur-[120px] rounded-full -z-10" />
+        <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[800px] opacity-80">
+            <DarkVeil
+              hueShift={160}
+              noiseIntensity={0.05}
+              scanlineIntensity={0.2}
+              speed={2.0}
+              scanlineFrequency={0.5}
+              warpAmount={0.3}
+            />
+          </div>
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-blue-600/5 blur-[120px] rounded-full" />
+        </div>
         
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
