@@ -1,0 +1,16 @@
+fastapi
+uvicorn
+python-dotenv
+openai
+pydantic
+pydantic-settings
+sqlalchemy
+aiosqlite
+python-multipart
+PyMuPDF
+pdfplumber
+tesseract
+requests
+python-jose[cryptography]
+passlib[bcrypt]
+email-validator
