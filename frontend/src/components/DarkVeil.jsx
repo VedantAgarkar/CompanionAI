@@ -62,7 +62,7 @@ vec4 cppn_fn(vec2 coordinate,float in0,float in1,float in2){
 }
 
 void mainImage(out vec4 fragColor,in vec2 fragCoord){
-    vec2 uv = vVv;
+    vec2 uv = vUv;
     uv += uWarp * vec2(sin(uv.y * 6.283 + uTime * 0.5), cos(uv.x * 6.283 + uTime * 0.5)) * 0.05;
     fragColor = cppn_fn(uv, 0.1 * sin(0.3 * uTime), 0.1 * sin(0.69 * uTime), 0.1 * sin(0.44 * uTime));
 }

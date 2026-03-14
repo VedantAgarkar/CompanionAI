@@ -47,7 +47,7 @@ const Navbar = ({ onNavigate, onStart }) => {
       <div className="hidden md:flex gap-8 text-[var(--text-secondary)] text-sm font-medium items-center">
         <button onClick={() => onNavigate('landing')} className="hover:text-[var(--text-primary)] transition-colors">{t('nav.home')}</button>
         <button 
-          onClick={() => { onNavigate('landing'); setTimeout(() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' }), 100); }} 
+          onClick={() => onNavigate('features')} 
           className="hover:text-[var(--text-primary)] transition-colors"
         >
           {t('nav.features')}

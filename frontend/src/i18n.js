@@ -26,6 +26,22 @@ const resources = {
         "contactDesc": "Have questions? We're here to help you get the most out of CompanionAI.",
         "contactBtn": "Contact Support"
       },
+      "featuresPage": {
+        "title": "Platform Features",
+        "subtitle": "Discover how CompanionAI empowers your decision-making process with cutting-edge AI technology.",
+        "f1Title": "Domain-Specific AI",
+        "f1Desc": "Tailored intelligence for startups, small businesses, and agriculture, trained on specialized datasets.",
+        "f2Title": "Multilingual Magic",
+        "f2Desc": "Communicate fluently in English, Hindi, and Marathi with full localized support.",
+        "f3Title": "Secure Analysis",
+        "f3Desc": "Upload documents safely for AI-powered insights and summaries without compromising privacy.",
+        "f4Title": "Real-time Guidance",
+        "f4Desc": "Get instant answers and actionable steps to complex problems anytime, anywhere.",
+        "f5Title": "Cross-Device Sync",
+        "f5Desc": "Access your data and chat history seamlessly across phones, tablets, and desktops.",
+        "f6Title": "Premium UI",
+        "f6Desc": "A sleek, dark-mode first interface designed for focus and productivity."
+      },
       "domains": {
         "explore": "Explore ",
         "aiDomains": "AI Domains",
@@ -83,6 +99,22 @@ const resources = {
         "contactDesc": "क्या आपके पास प्रश्न हैं? हम यहाँ CompanionAI का अधिकतम लाभ उठाने में आपकी मदद करने के लिए हैं।",
         "contactBtn": "समर्थन से संपर्क करें"
       },
+      "featuresPage": {
+        "title": "प्लेटफ़ॉर्म की विशेषताएं",
+        "subtitle": "जानें कि CompanionAI अत्याधुनिक AI तकनीक के साथ आपकी निर्णय लेने की प्रक्रिया को कैसे सशक्त बनाता है।",
+        "f1Title": "डोमेन-विशिष्ट AI",
+        "f1Desc": "विशेष डेटासेट पर प्रशिक्षित स्टार्टअप, छोटे व्यवसायों और कृषि के लिए अनुकूलित बुद्धिमत्ता।",
+        "f2Title": "बहुभाषी जादू",
+        "f2Desc": "पूर्ण स्थानीयकृत समर्थन के साथ अंग्रेजी, हिंदी और मराठी में धाराप्रवाह संवाद करें।",
+        "f3Title": "सुरक्षित विश्लेषण",
+        "f3Desc": "गोपनीयता से समझौता किए बिना AI-संचालित अंतर्दृष्टि और सारांश के लिए सुरक्षित रूप से दस्तावेज़ अपलोड करें।",
+        "f4Title": "वास्तविक समय मार्गदर्शन",
+        "f4Desc": "कभी भी, कहीं भी जटिल समस्याओं के त्वरित उत्तर और कार्रवाई योग्य कदम प्राप्त करें।",
+        "f5Title": "क्रॉस-डिवाइस सिंक",
+        "f5Desc": "फोन, टैबलेट और डेस्कटॉप पर अपने डेटा और चैट इतिहास को निर्बाध रूप से एक्सेस करें।",
+        "f6Title": "प्रीमियम UI",
+        "f6Desc": "फोकस और उत्पादकता के लिए डिज़ाइन किया गया एक आकर्षक, डार्क-मोड इंटरफ़ेस।"
+      },
       "domains": {
         "explore": "एक्सप्लोर करें ",
         "aiDomains": "एआई डोमेन",
@@ -139,6 +171,22 @@ const resources = {
         "contactTitle": "संपर्कात रहा",
         "contactDesc": "काही प्रश्न आहेत? आपण CompanionAI चा जास्तीत जास्त फायदा घेण्यासाठी आम्ही येथे आहोत.",
         "contactBtn": "सपोर्टशी संपर्क साधा"
+      },
+      "featuresPage": {
+        "title": "प्लॅटफॉर्मची वैशिष्ट्ये",
+        "subtitle": "CompanionAI अत्याधुनिक AI तंत्रज्ञानासह तुमची निर्णय घेण्याची प्रक्रिया कशी सक्षम करते ते जाणून घ्या.",
+        "f1Title": "डोमेन-विशिष्ट AI",
+        "f1Desc": "स्टार्टअप्स, लहान व्यवसाय आणि शेतीसाठी तयार केलेली विशिष्ट बुद्धिमत्ता, विशेष डेटासेटवर प्रशिक्षित.",
+        "f2Title": "बहुभाषिक जादू",
+        "f2Desc": "पूर्ण स्थानिक समर्थनासह इंग्रजी, हिंदी आणि मराठीमध्ये अस्खलितपणे संवाद साधा.",
+        "f3Title": "सुरक्षित विश्लेषण",
+        "f3Desc": "गोपनीयतेशी तडजोड न करता AI-आधारित अंतर्दृष्टि आणि सारांशासाठी सुरक्षितपणे कागदपत्रे अपलोड करा.",
+        "f4Title": "रिअल-टाइम मार्गदर्शन",
+        "f4Desc": "कधीही, कुठेही जटिल समस्यांची त्वरित उत्तरे आणि कृती करण्यायोग्य पावले मिळवा.",
+        "f5Title": "क्रॉस-डिव्हाइस सिंक",
+        "f5Desc": "फोन, टॅब्लेट आणि डेस्कटॉपवर तुमचा डेटा आणि चॅट इतिहास अखंडपणे ॲक्सेस करा.",
+        "f6Title": "प्रीमियम UI",
+        "f6Desc": "फोकस आणि उत्पादकतेसाठी डिझाइन केलेले एक स्लीक, डार्क-मोड इंटरफेस."
       },
       "domains": {
         "explore": "एक्सप्लोर करा ",

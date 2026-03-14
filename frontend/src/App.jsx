@@ -3,9 +3,10 @@ import { ThemeProvider } from './context/ThemeContext'
 import LandingPage from './components/LandingPage'
 import ChatDashboard from './components/ChatDashboard'
 import DomainPage from './components/DomainPage'
+import FeaturesPage from './components/FeaturesPage'
 
 function AppContent() {
-  const [view, setView] = useState('landing'); // 'landing', 'domains', 'chat'
+  const [view, setView] = useState('landing'); // 'landing', 'features', 'domains', 'chat'
   const [domain, setDomain] = useState('general');
 
   const startApp = () => setView('domains');
@@ -16,6 +17,10 @@ function AppContent() {
 
   if (view === 'landing') {
     return <LandingPage onStart={startApp} onNavigate={setView} />;
+  }
+
+  if (view === 'features') {
+    return <FeaturesPage onNavigate={setView} onStart={startApp} />;
   }
 
   if (view === 'domains') {

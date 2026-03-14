@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Rocket, Briefcase, Shrub, Shield, Zap, Layout } from 'lucide-react';
+import { Rocket, Briefcase, Shrub, Shield, Zap, Layout, ArrowRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import Navbar from './Navbar';
 import DarkVeil from './DarkVeil';
@@ -71,6 +71,14 @@ const LandingPage = ({ onStart, onNavigate }) => {
               title={t('landing.feature3Title')}
               desc={t('landing.feature3Desc')}
             />
+          </div>
+          <div className="mt-16 text-center">
+            <button 
+              onClick={() => onNavigate('features')}
+              className="inline-flex items-center gap-2 text-blue-400 font-semibold hover:text-blue-300 transition-colors group"
+            >
+              Discover All Features <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
+            </button>
           </div>
         </div>
       </section>
