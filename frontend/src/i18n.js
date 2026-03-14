@@ -8,7 +8,7 @@ const resources = {
         "home": "Home",
         "features": "Features",
         "domains": "Domains",
-        "contact": "Contact",
+        "about": "About",
         "signIn": "Sign In"
       },
       "landing": {
@@ -25,6 +25,27 @@ const resources = {
         "contactTitle": "Get in Touch",
         "contactDesc": "Have questions? We're here to help you get the most out of CompanionAI.",
         "contactBtn": "Contact Support"
+      },
+      "aboutPage": {
+        "title": "Meet the Minds",
+        "subtitle": "The dedicated team behind CompanionAI, working to bring intelligence to every corner of industry.",
+        "team": [
+          {
+            "name": "Sarah Chen",
+            "role": "Lead AI Architect",
+            "bio": "Designed the core neural processing engine and domain adapters."
+          },
+          {
+            "name": "Marcus Thorne",
+            "role": "Product Strategist",
+            "bio": "Bridged the gap between AI capabilities and small business needs."
+          },
+          {
+            "name": "Elena Rodriguez",
+            "role": "UX Lead",
+            "bio": "Crafted the premium glassmorphism interface and seamless user flows."
+          }
+        ]
       },
       "featuresPage": {
         "title": "Platform Features",
@@ -81,7 +102,7 @@ const resources = {
         "home": "होम",
         "features": "विशेषताएं",
         "domains": "डोमेन",
-        "contact": "संपर्क",
+        "about": "हमारे बारे में",
         "signIn": "साइन इन"
       },
       "landing": {
@@ -98,6 +119,27 @@ const resources = {
         "contactTitle": "संपर्क करें",
         "contactDesc": "क्या आपके पास प्रश्न हैं? हम यहाँ CompanionAI का अधिकतम लाभ उठाने में आपकी मदद करने के लिए हैं।",
         "contactBtn": "समर्थन से संपर्क करें"
+      },
+      "aboutPage": {
+        "title": "महारथियों से मिलें",
+        "subtitle": "CompanionAI के पीछे की समर्पित टीम, जो उद्योग के हर कोने में बुद्धिमत्ता लाने के लिए काम कर रही है।",
+        "team": [
+          {
+            "name": "सारा चेन",
+            "role": "लीड एआई आर्किटेक्ट",
+            "bio": "कोर न्यूरल प्रोसेसिंग इंजन और डोमेन एडेप्टर डिजाइन किए।"
+          },
+          {
+            "name": "मार्कस थार्न",
+            "role": "उत्पाद रणनीतिकार",
+            "bio": "एआई क्षमताओं और लघु व्यवसाय आवश्यकताओं के बीच की खाई को पाटा।"
+          },
+          {
+            "name": "ऐलेना रोड्रिगेज",
+            "role": "यूएक्स लीड",
+            "bio": "प्रीमियम ग्लासमॉर्फिज्म इंटरफ़ेस और सहज उपयोगकर्ता प्रवाह तैयार किया।"
+          }
+        ]
       },
       "featuresPage": {
         "title": "प्लेटफ़ॉर्म की विशेषताएं",
@@ -154,7 +196,7 @@ const resources = {
         "home": "मुख्य पृष्ठ",
         "features": "वैशिष्ट्ये",
         "domains": "डोमेन",
-        "contact": "संपर्क",
+        "about": "आमच्याबद्दल",
         "signIn": "साइन इन"
       },
       "landing": {
@@ -171,6 +213,27 @@ const resources = {
         "contactTitle": "संपर्कात रहा",
         "contactDesc": "काही प्रश्न आहेत? आपण CompanionAI चा जास्तीत जास्त फायदा घेण्यासाठी आम्ही येथे आहोत.",
         "contactBtn": "सपोर्टशी संपर्क साधा"
+      },
+      "aboutPage": {
+        "title": "महारथींना भेटा",
+        "subtitle": "CompanionAI मागील समर्पित टीम, जी उद्योगाच्या प्रत्येक कोपऱ्यात बुद्धिमत्ता आणण्यासाठी काम करत आहे.",
+        "team": [
+          {
+            "name": "सारा चेन",
+            "role": "लीड एआई आर्किटेक्ट",
+            "bio": "कोअर न्यूरल प्रोसेसिंग इंजिन आणि डोमेन अडॅप्टर डिझाइन केले."
+          },
+          {
+            "name": "मार्कस थार्न",
+            "role": "प्रोडक्ट स्ट्रॅटेजिस्ट",
+            "bio": "AI क्षमता आणि लघु व्यवसाय गरजांमधील अंतर भरून काढले."
+          },
+          {
+            "name": "ऐलेना रोड्रिगेज",
+            "role": "UX लीड",
+            "bio": "प्रीमियम ग्लासमॉर्फिझम इंटरफेस आणि अखंड वापरकर्ता फ्लो तयार केला."
+          }
+        ]
       },
       "featuresPage": {
         "title": "प्लॅटफॉर्मची वैशिष्ट्ये",

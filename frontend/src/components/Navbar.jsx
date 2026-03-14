@@ -54,10 +54,10 @@ const Navbar = ({ onNavigate, onStart }) => {
         </button>
         <button onClick={() => onNavigate('domains')} className="hover:text-[var(--text-primary)] transition-colors">{t('nav.domains')}</button>
         <button 
-          onClick={() => { onNavigate('landing'); setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100); }} 
+          onClick={() => onNavigate('about')} 
           className="hover:text-[var(--text-primary)] transition-colors"
         >
-          {t('nav.contact')}
+          {t('nav.about')}
         </button>
       </div>
 

@@ -4,9 +4,10 @@ import LandingPage from './components/LandingPage'
 import ChatDashboard from './components/ChatDashboard'
 import DomainPage from './components/DomainPage'
 import FeaturesPage from './components/FeaturesPage'
+import AboutPage from './components/AboutPage'
 
 function AppContent() {
-  const [view, setView] = useState('landing'); // 'landing', 'features', 'domains', 'chat'
+  const [view, setView] = useState('landing'); // 'landing', 'features', 'domains', 'about', 'chat'
   const [domain, setDomain] = useState('general');
 
   const startApp = () => setView('domains');
@@ -21,6 +22,10 @@ function AppContent() {
 
   if (view === 'features') {
     return <FeaturesPage onNavigate={setView} onStart={startApp} />;
+  }
+
+  if (view === 'about') {
+    return <AboutPage onNavigate={setView} onStart={startApp} />;
   }
 
   if (view === 'domains') {
