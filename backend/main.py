@@ -19,10 +19,14 @@ app.add_middleware(
 )
 
 from api.files import router as files_router
+from api.admin import router as admin_router
+from api.contact import router as contact_router
 
 app.include_router(chat_router)
 app.include_router(auth_router)
 app.include_router(files_router)
+app.include_router(admin_router)
+app.include_router(contact_router)
 
 @app.get("/")
 async def root():

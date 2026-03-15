@@ -7,9 +7,26 @@ const resources = {
       "nav": {
         "home": "Home",
         "features": "Features",
-        "domains": "Domains",
+        "domains": "Products",
         "about": "About",
-        "signIn": "Sign In"
+        "signIn": "Sign In",
+        "signUp": "Sign Up"
+      },
+      "auth": {
+        "signInTitle": "Welcome Back",
+        "signInSub": "Pick up where you left off with your AI companion.",
+        "signUpTitle": "Join CompanionAI",
+        "signUpSub": "Start your journey towards intelligent decision-making today.",
+        "email": "Email Address",
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "rememberMe": "Remember Me",
+        "forgot": "Forgot Password?",
+        "noAccount": "Don't have an account?",
+        "hasAccount": "Already have an account?",
+        "btnSignIn": "Sign In",
+        "btnSignUp": "Create Account",
+        "name": "Full Name"
       },
       "landing": {
         "heroTitle1": "AI-Powered ",
@@ -31,19 +48,24 @@ const resources = {
         "subtitle": "The dedicated team behind CompanionAI, working to bring intelligence to every corner of industry.",
         "team": [
           {
-            "name": "Sarah Chen",
+            "name": "Mandar Gopal Petkar",
             "role": "Lead AI Architect",
-            "bio": "Designed the core neural processing engine and domain adapters."
+            "bio": "Designed the core AI engine and domain-specific intelligence modules powering CompanionAI."
           },
           {
-            "name": "Marcus Thorne",
-            "role": "Product Strategist",
-            "bio": "Bridged the gap between AI capabilities and small business needs."
+            "name": "Om Lahu Shinde",
+            "role": "Full Stack Developer",
+            "bio": "Built the end-to-end platform infrastructure, from FastAPI backend to the React frontend."
           },
           {
-            "name": "Elena Rodriguez",
-            "role": "UX Lead",
-            "bio": "Crafted the premium glassmorphism interface and seamless user flows."
+            "name": "Tauseef Ahmad Shaikh Ansar",
+            "role": "ML Engineer & Data Specialist",
+            "bio": "Developed and fine-tuned machine learning pipelines for startup, farming, and business domains."
+          },
+          {
+            "name": "Vikas Vasant Chavan",
+            "role": "UI/UX Designer",
+            "bio": "Crafted the premium glassmorphism interface and seamless multilingual user experience."
           }
         ]
       },
@@ -81,18 +103,18 @@ const resources = {
         "launch": "Launch"
       },
       "chat": {
-        "domains": "Domains",
-        "back": "Back to Domains",
-        "currentDomain": "Current Domain:",
-        "startConv": "Start a conversation in the",
-        "domain": "domain.",
+        "products": "Products",
+        "backToProducts": "Back to Products",
+        "generalAI": "General AI",
+        "businessAI": "Business AI",
+        "startupAI": "Startup AI",
+        "farmingAI": "Farming AI",
+        "startConv": "Start a conversation",
+        "askAbout": "Ask anything about",
+        "messagePlaceholder": "Message",
         "thinking": "Thinking...",
-        "message": "Message",
-        "ai": "AI...",
-        "testUser": "Test User",
-        "freeTier": "Free Tier",
-        "error": "Sorry, I encountered an error. Please try again.",
-        "uploadFailed": "Failed to upload file. Make sure it is a PDF."
+        "enterHint": "Press Enter to send · Shift+Enter for new line",
+        "error": "Sorry, I encountered an error. Please try again."
       }
     }
   },
@@ -101,9 +123,26 @@ const resources = {
       "nav": {
         "home": "होम",
         "features": "विशेषताएं",
-        "domains": "डोमेन",
+        "domains": "उत्पाद",
         "about": "हमारे बारे में",
-        "signIn": "साइन इन"
+        "signIn": "साइन इन",
+        "signUp": "साइन अप"
+      },
+      "auth": {
+        "signInTitle": "वापसी पर स्वागत है",
+        "signInSub": "जहां आपने अपने एआई साथी के साथ छोड़ा था, वहीं से शुरू करें।",
+        "signUpTitle": "CompanionAI में शामिल हों",
+        "signUpSub": "बुद्धिमान निर्णय लेने की दिशा में आज ही अपनी यात्रा शुरू करें।",
+        "email": "ईमेल पता",
+        "password": "पासवर्ड",
+        "confirmPassword": "पासवर्ड की पुष्टि करें",
+        "rememberMe": "मुझे याद रखें",
+        "forgot": "पासवर्ड भूल गए?",
+        "noAccount": "खाता नहीं है?",
+        "hasAccount": "पहले से ही एक खाता है?",
+        "btnSignIn": "साइन इन करें",
+        "btnSignUp": "खाता बनाएं",
+        "name": "पूरा नाम"
       },
       "landing": {
         "heroTitle1": "एआई-संचालित ",
@@ -125,19 +164,24 @@ const resources = {
         "subtitle": "CompanionAI के पीछे की समर्पित टीम, जो उद्योग के हर कोने में बुद्धिमत्ता लाने के लिए काम कर रही है।",
         "team": [
           {
-            "name": "सारा चेन",
+            "name": "मंदार गोपाल पेटकर",
             "role": "लीड एआई आर्किटेक्ट",
-            "bio": "कोर न्यूरल प्रोसेसिंग इंजन और डोमेन एडेप्टर डिजाइन किए।"
+            "bio": "CompanionAI को शक्ति देने वाले कोर एआई इंजन और डोमेन-विशिष्ट इंटेलिजेंस मॉड्यूल डिजाइन किए।"
           },
           {
-            "name": "मार्कस थार्न",
-            "role": "उत्पाद रणनीतिकार",
-            "bio": "एआई क्षमताओं और लघु व्यवसाय आवश्यकताओं के बीच की खाई को पाटा।"
+            "name": "ओम लाहू शिंदे",
+            "role": "फुल स्टैक डेवलपर",
+            "bio": "FastAPI बैकएंड से React फ्रंटएंड तक, संपूर्ण प्लेटफ़ॉर्म इंफ्रास्ट्रक्चर तैयार किया।"
           },
           {
-            "name": "ऐलेना रोड्रिगेज",
-            "role": "यूएक्स लीड",
-            "bio": "प्रीमियम ग्लासमॉर्फिज्म इंटरफ़ेस और सहज उपयोगकर्ता प्रवाह तैयार किया।"
+            "name": "तौसीफ अहमद शेख अंसार",
+            "role": "एमएल इंजीनियर एवं डेटा विशेषज्ञ",
+            "bio": "स्टार्टअप, कृषि और व्यवसाय डोमेन के लिए मशीन लर्निंग पाइपलाइन विकसित और फाइन-ट्यून किए।"
+          },
+          {
+            "name": "विकास वसंत चव्हाण",
+            "role": "यूआई/यूएक्स डिज़ाइनर",
+            "bio": "प्रीमियम ग्लासमॉर्फिज्म इंटरफ़ेस और सहज बहुभाषी उपयोगकर्ता अनुभव तैयार किया।"
           }
         ]
       },
@@ -175,18 +219,18 @@ const resources = {
         "launch": "लॉन्च करें"
       },
       "chat": {
-         "domains": "डोमेन",
-         "back": "डोमेन पर वापस जाएं",
-         "currentDomain": "वर्तमान डोमेन:",
-         "startConv": "इसमें बातचीत शुरू करें",
-         "domain": "डोमेन।",
-         "thinking": "सोच रहा है...",
-         "message": "मैसेज करें",
-         "ai": "एआई...",
-         "testUser": "टेस्ट यूजर",
-         "freeTier": "फ्री टियर",
-         "error": "क्षमा करें, मुझे एक त्रुटि मिली। कृपया पुनः प्रयास करें।",
-         "uploadFailed": "फ़ाइल अपलोड करने में विफल। सुनिश्चित करें कि यह एक पीडीएफ है।"
+        "products": "उत्पाद",
+        "backToProducts": "उत्पादों पर वापस",
+        "generalAI": "सामान्य AI",
+        "businessAI": "व्यापार AI",
+        "startupAI": "स्टार्टअप AI",
+        "farmingAI": "कृषि AI",
+        "startConv": "बातचीत शुरू करें",
+        "askAbout": "इसके बारे में कुछ भी पूछें",
+        "messagePlaceholder": "मैसेज",
+        "thinking": "सोच रहा है...",
+        "enterHint": "भेजने के लिए एंटर दबाएं · नई पंक्ति के लिए Shift+Enter",
+        "error": "क्षमा करें, मुझे एक त्रुटि मिली। कृपया पुनः प्रयास करें।"
       }
     }
   },
@@ -195,9 +239,26 @@ const resources = {
       "nav": {
         "home": "मुख्य पृष्ठ",
         "features": "वैशिष्ट्ये",
-        "domains": "डोमेन",
+        "domains": "उत्पादने",
         "about": "आमच्याबद्दल",
-        "signIn": "साइन इन"
+        "signIn": "साइन इन",
+        "signUp": "साइन अप"
+      },
+      "auth": {
+        "signInTitle": "पुन्हा स्वागत आहे",
+        "signInSub": "तुमच्या AI सोबत्यासह जिथे थांबला होतात तिथून पुन्हा सुरुवात करा.",
+        "signUpTitle": "CompanionAI मध्ये सामील व्हा",
+        "signUpSub": "आजच बुद्धिमान निर्णय घेण्याच्या दिशेने आपला प्रवास सुरू करा.",
+        "email": "ईमेल पत्ता",
+        "password": "पासवर्ड",
+        "confirmPassword": "पासवर्डची पुष्टी करा",
+        "rememberMe": "माझी आठवण ठेवा",
+        "forgot": "पासवर्ड विसरलात?",
+        "noAccount": "खाते नाही?",
+        "hasAccount": "आधीच खाते आहे का?",
+        "btnSignIn": "साइन इन करा",
+        "btnSignUp": "खाते तयार करा",
+        "name": "पूर्ण नाव"
       },
       "landing": {
         "heroTitle1": "AI-सक्षम ",
@@ -219,19 +280,24 @@ const resources = {
         "subtitle": "CompanionAI मागील समर्पित टीम, जी उद्योगाच्या प्रत्येक कोपऱ्यात बुद्धिमत्ता आणण्यासाठी काम करत आहे.",
         "team": [
           {
-            "name": "सारा चेन",
+            "name": "मंदार गोपाल पेटकर",
             "role": "लीड एआई आर्किटेक्ट",
-            "bio": "कोअर न्यूरल प्रोसेसिंग इंजिन आणि डोमेन अडॅप्टर डिझाइन केले."
+            "bio": "CompanionAI ला शक्ती देणारे कोअर AI इंजिन आणि डोमेन-विशिष्ट इंटेलिजेंस मॉड्यूल डिझाइन केले."
           },
           {
-            "name": "मार्कस थार्न",
-            "role": "प्रोडक्ट स्ट्रॅटेजिस्ट",
-            "bio": "AI क्षमता आणि लघु व्यवसाय गरजांमधील अंतर भरून काढले."
+            "name": "ओम लाहू शिंदे",
+            "role": "फुल स्टॅक डेव्हलपर",
+            "bio": "FastAPI बॅकएंड ते React फ्रंटएंड पर्यंत संपूर्ण प्लॅटफॉर्म इन्फ्रास्ट्रक्चर तयार केले."
           },
           {
-            "name": "ऐलेना रोड्रिगेज",
-            "role": "UX लीड",
-            "bio": "प्रीमियम ग्लासमॉर्फिझम इंटरफेस आणि अखंड वापरकर्ता फ्लो तयार केला."
+            "name": "तौसीफ अहमद शेख अन्सार",
+            "role": "ML इंजिनियर आणि डेटा तज्ञ",
+            "bio": "स्टार्टअप, शेती आणि व्यवसाय डोमेनसाठी मशीन लर्निंग पाइपलाइन विकसित आणि फाइन-ट्यून केल्या."
+          },
+          {
+            "name": "विकास वसंत चव्हाण",
+            "role": "UI/UX डिझायनर",
+            "bio": "प्रीमियम ग्लासमॉर्फिझम इंटरफेस आणि अखंड बहुभाषिक वापरकर्ता अनुभव तयार केला."
           }
         ]
       },
@@ -269,18 +335,18 @@ const resources = {
         "launch": "लाँच करा"
       },
       "chat": {
-         "domains": "डोमेन",
-         "back": "डोमेनवर परत जा",
-         "currentDomain": "सध्याचा डोमेन:",
-         "startConv": "यामध्ये संभाषण सुरू करा",
-         "domain": "डोमेन.",
-         "thinking": "विचार करत आहे...",
-         "message": "मॅसेज पाठवा",
-         "ai": "AI...",
-         "testUser": "टेस्ट यूजर",
-         "freeTier": "फ्री टियर",
-         "error": "माफ करा, मला एक त्रुटी आढळली. कृपया पुन्हा प्रयत्न करा.",
-         "uploadFailed": "फाइल अपलोड करण्यात अयशस्वी. पीडीएफ असल्याची खात्री करा."
+        "products": "उत्पादने",
+        "backToProducts": "उत्पादनांवर परत",
+        "generalAI": "सामान्य AI",
+        "businessAI": "व्यवसाय AI",
+        "startupAI": "स्टार्टअप AI",
+        "farmingAI": "शेती AI",
+        "startConv": "संभाषण सुरू करा",
+        "askAbout": "याबद्दल काहीही विचारा",
+        "messagePlaceholder": "मॅसेज",
+        "thinking": "विचार करत आहे...",
+        "enterHint": "पाठवण्यासाठी एंटर दाबा · नवीन ओळीसाठी Shift+Enter",
+        "error": "माफ करा, मला एक त्रुटी आढळली. कृपया पुन्हा प्रयत्न करा."
       }
     }
   }

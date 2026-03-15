@@ -56,7 +56,7 @@ const FeaturesPage = ({ onNavigate, onStart }) => {
   ];
 
   return (
-    <div className="bg-[var(--bg-primary)] min-h-screen text-[var(--text-primary)] relative overflow-x-hidden">
+    <div className="bg-[var(--bg-primary)] min-h-screen text-[var(--text-primary)] relative overflow-x-hidden pt-24">
       <Navbar onNavigate={onNavigate} onStart={onStart} />
       
       {/* Background Effect */}

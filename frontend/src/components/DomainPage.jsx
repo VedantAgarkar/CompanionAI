@@ -47,7 +47,7 @@ const DomainPage = ({ onSelect, onNavigate, onStart }) => {
   ];
 
   return (
-    <div className="min-h-screen bg-[var(--bg-primary)] font-sans text-[var(--text-primary)] relative flex flex-col transition-colors duration-300">
+    <div className="min-h-screen bg-[var(--bg-primary)] font-sans text-[var(--text-primary)] relative flex flex-col transition-colors duration-300 pt-24">
       <Navbar onNavigate={onNavigate} onStart={onStart} />
       
       <div className="flex-grow py-20 px-6 relative">
