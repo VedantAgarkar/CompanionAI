@@ -48,24 +48,9 @@ const resources = {
         "subtitle": "The dedicated team behind CompanionAI, working to bring intelligence to every corner of industry.",
         "team": [
           {
-            "name": "Mandar Gopal Petkar",
-            "role": "Lead AI Architect",
-            "bio": "Designed the core AI engine and domain-specific intelligence modules powering CompanionAI."
-          },
-          {
-            "name": "Om Lahu Shinde",
-            "role": "Full Stack Developer",
-            "bio": "Built the end-to-end platform infrastructure, from FastAPI backend to the React frontend."
-          },
-          {
-            "name": "Tauseef Ahmad Shaikh Ansar",
-            "role": "ML Engineer & Data Specialist",
-            "bio": "Developed and fine-tuned machine learning pipelines for startup, farming, and business domains."
-          },
-          {
-            "name": "Vikas Vasant Chavan",
-            "role": "UI/UX Designer",
-            "bio": "Crafted the premium glassmorphism interface and seamless multilingual user experience."
+            "name": "Vedant Agarkar",
+            "role": "Creator & Full Stack AI Developer",
+            "bio": "Built CompanionAI from the ground up — designing the AI engine, full-stack platform, and premium user experience."
           }
         ]
       },
@@ -164,24 +149,9 @@ const resources = {
         "subtitle": "CompanionAI के पीछे की समर्पित टीम, जो उद्योग के हर कोने में बुद्धिमत्ता लाने के लिए काम कर रही है।",
         "team": [
           {
-            "name": "मंदार गोपाल पेटकर",
-            "role": "लीड एआई आर्किटेक्ट",
-            "bio": "CompanionAI को शक्ति देने वाले कोर एआई इंजन और डोमेन-विशिष्ट इंटेलिजेंस मॉड्यूल डिजाइन किए।"
-          },
-          {
-            "name": "ओम लाहू शिंदे",
-            "role": "फुल स्टैक डेवलपर",
-            "bio": "FastAPI बैकएंड से React फ्रंटएंड तक, संपूर्ण प्लेटफ़ॉर्म इंफ्रास्ट्रक्चर तैयार किया।"
-          },
-          {
-            "name": "तौसीफ अहमद शेख अंसार",
-            "role": "एमएल इंजीनियर एवं डेटा विशेषज्ञ",
-            "bio": "स्टार्टअप, कृषि और व्यवसाय डोमेन के लिए मशीन लर्निंग पाइपलाइन विकसित और फाइन-ट्यून किए।"
-          },
-          {
-            "name": "विकास वसंत चव्हाण",
-            "role": "यूआई/यूएक्स डिज़ाइनर",
-            "bio": "प्रीमियम ग्लासमॉर्फिज्म इंटरफ़ेस और सहज बहुभाषी उपयोगकर्ता अनुभव तैयार किया।"
+            "name": "Vedant Agarkar",
+            "role": "निर्माता और फुल स्टैक एआई डेवलपर",
+            "bio": "CompanionAI को शुरू से बनाया — AI इंजन, फुल-स्टैक प्लेटफ़ॉर्म और प्रीमियम यूजर एक्सपीरियंस डिजाइन किया।"
           }
         ]
       },
@@ -280,24 +250,9 @@ const resources = {
         "subtitle": "CompanionAI मागील समर्पित टीम, जी उद्योगाच्या प्रत्येक कोपऱ्यात बुद्धिमत्ता आणण्यासाठी काम करत आहे.",
         "team": [
           {
-            "name": "मंदार गोपाल पेटकर",
-            "role": "लीड एआई आर्किटेक्ट",
-            "bio": "CompanionAI ला शक्ती देणारे कोअर AI इंजिन आणि डोमेन-विशिष्ट इंटेलिजेंस मॉड्यूल डिझाइन केले."
-          },
-          {
-            "name": "ओम लाहू शिंदे",
-            "role": "फुल स्टॅक डेव्हलपर",
-            "bio": "FastAPI बॅकएंड ते React फ्रंटएंड पर्यंत संपूर्ण प्लॅटफॉर्म इन्फ्रास्ट्रक्चर तयार केले."
-          },
-          {
-            "name": "तौसीफ अहमद शेख अन्सार",
-            "role": "ML इंजिनियर आणि डेटा तज्ञ",
-            "bio": "स्टार्टअप, शेती आणि व्यवसाय डोमेनसाठी मशीन लर्निंग पाइपलाइन विकसित आणि फाइन-ट्यून केल्या."
-          },
-          {
-            "name": "विकास वसंत चव्हाण",
-            "role": "UI/UX डिझायनर",
-            "bio": "प्रीमियम ग्लासमॉर्फिझम इंटरफेस आणि अखंड बहुभाषिक वापरकर्ता अनुभव तयार केला."
+            "name": "Vedant Agarkar",
+            "role": "निर्माता आणि फुल स्टॅक AI डेव्हलपर",
+            "bio": "CompanionAI सुरुवातीपासून तयार केले — AI इंजिन, फुल-स्टॅक प्लॅटफॉर्म आणि प्रीमियम यूजर एक्सपीरियन्स डिझाइन केले."
           }
         ]
       },
