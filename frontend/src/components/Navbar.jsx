@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Zap, Globe, ChevronDown, Sun, Moon, LogOut, Crown, LayoutDashboard } from 'lucide-react';
+import { Zap, Globe, ChevronDown, Sun, Moon, LogOut, Crown, LayoutDashboard, Menu, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '../context/ThemeContext';
 import { useUser } from '../context/UserContext';
@@ -11,6 +11,7 @@ const Navbar = ({ onNavigate, onStart }) => {
   const [isLangOpen, setIsLangOpen] = useState(false);
   const [showLogout, setShowLogout] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const dropdownRef = useRef(null);
   const profileRef = useRef(null);
 
@@ -61,15 +62,64 @@ const Navbar = ({ onNavigate, onStart }) => {
         ? 'bg-[var(--bg-primary)]/75 backdrop-blur-2xl border-b border-white/10 shadow-2xl shadow-black/20'
         : 'bg-transparent border-b border-transparent'
     }`}>
-      <div className="w-full max-w-7xl mx-auto flex justify-between items-center px-8 py-5">
-      <div 
-        className="flex items-center gap-2 cursor-pointer" 
-        onClick={() => onNavigate('landing')}
-      >
+      {/* Mobile Backdrop */}
+      {isMobileMenuOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
+
+      {/* Mobile Sidebar */}
+      <div className={`fixed top-0 left-0 bottom-0 w-64 bg-[var(--bg-secondary)] border-r border-[var(--border-color)] z-50 transform transition-transform duration-300 ease-in-out md:hidden flex flex-col ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+        <div className="p-6 border-b border-[var(--border-color)] flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+              <Zap className="w-5 h-5 text-white" />
+            </div>
+            <span className="text-xl font-bold tracking-tight text-[var(--text-primary)]">CompanionAI</span>
+          </div>
+          <button 
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+          >
+            <X className="w-6 h-6" />
+          </button>
+        </div>
+        
+        <div className="flex flex-col p-4 gap-2">
+          <button onClick={() => { setIsMobileMenuOpen(false); onNavigate('landing'); }} className="text-left px-4 py-3 rounded-xl hover:bg-white/5 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors font-semibold">
+            {t('nav.home')}
+          </button>
+          <button onClick={() => { setIsMobileMenuOpen(false); onNavigate('features'); }} className="text-left px-4 py-3 rounded-xl hover:bg-white/5 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors font-semibold">
+            {t('nav.features')}
+          </button>
+          <button onClick={() => { setIsMobileMenuOpen(false); onNavigate('domains'); }} className="text-left px-4 py-3 rounded-xl hover:bg-white/5 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors font-semibold">
+            {t('nav.domains')}
+          </button>
+          <button onClick={() => { setIsMobileMenuOpen(false); onNavigate('about'); }} className="text-left px-4 py-3 rounded-xl hover:bg-white/5 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors font-semibold">
+            {t('nav.about')}
+          </button>
+        </div>
+      </div>
+
+      <div className="w-full max-w-7xl mx-auto flex justify-between items-center px-4 md:px-8 py-3 md:py-5">
+      <div className="flex items-center gap-3">
+        <button 
+          className="md:hidden text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors p-1"
+          onClick={() => setIsMobileMenuOpen(true)}
+        >
+          <Menu className="w-6 h-6" />
+        </button>
+        <div 
+          className="flex items-center gap-2 cursor-pointer" 
+          onClick={() => onNavigate('landing')}
+        >
         <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
           <Zap className="w-5 h-5 text-white" />
         </div>
-        <span className="text-3xl font-bold tracking-tight text-[var(--text-primary)]">CompanionAI</span>
+        <span className="text-2xl md:text-3xl font-bold tracking-tight text-[var(--text-primary)]">CompanionAI</span>
+        </div>
       </div>
 
       <div className="hidden md:flex gap-10 text-[var(--text-secondary)] text-base font-semibold items-center">
@@ -79,7 +129,7 @@ const Navbar = ({ onNavigate, onStart }) => {
         <button onClick={() => onNavigate('about')} className="hover:text-[var(--text-primary)] transition-colors tracking-wide">{t('nav.about')}</button>
       </div>
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2 sm:gap-4">
         {/* Theme Toggle */}
         <button 
           onClick={toggleTheme}
@@ -92,11 +142,11 @@ const Navbar = ({ onNavigate, onStart }) => {
         <div className="relative" ref={dropdownRef}>
           <button 
             onClick={() => setIsLangOpen(!isLangOpen)}
-            className="flex items-center gap-2 bg-[var(--bg-secondary)] backdrop-blur-md border border-[var(--border-color)] rounded-xl px-4 py-2 hover:border-blue-500/50 transition-all group"
+            className="flex items-center gap-1 sm:gap-2 bg-[var(--bg-secondary)] backdrop-blur-md border border-[var(--border-color)] rounded-xl px-2 sm:px-4 py-2 hover:border-blue-500/50 transition-all group"
           >
-            <Globe className="w-5 h-5 text-[var(--text-secondary)] group-hover:text-blue-400 transition-colors" />
-            <span className="text-base font-semibold text-[var(--text-secondary)]">{currentLanguageLabel}</span>
-            <ChevronDown className={`w-4 h-4 text-[var(--text-secondary)] transition-transform duration-300 ${isLangOpen ? 'rotate-180' : ''}`} />
+            <Globe className="w-4 h-4 sm:w-5 sm:h-5 text-[var(--text-secondary)] group-hover:text-blue-400 transition-colors" />
+            <span className="text-sm sm:text-base font-semibold text-[var(--text-secondary)]">{currentLanguageLabel}</span>
+            <ChevronDown className={`w-3 h-3 sm:w-4 sm:h-4 text-[var(--text-secondary)] transition-transform duration-300 ${isLangOpen ? 'rotate-180' : ''}`} />
           </button>
 
           {isLangOpen && (

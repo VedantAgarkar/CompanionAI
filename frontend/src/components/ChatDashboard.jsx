@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, User, Bot, Loader2, ArrowLeft, Zap } from 'lucide-react';
+import { Send, User, Bot, Loader2, ArrowLeft, Zap, Menu, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useUser } from '../context/UserContext';
 import MarkdownMessage from './MarkdownMessage';
@@ -21,6 +21,7 @@ const ChatDashboard = ({ domain, setDomain, onGoBack }) => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const messagesRef = useRef([]);  // always has latest messages, no stale closure
   const messagesEndRef = useRef(null);
   const textareaRef = useRef(null);
@@ -84,13 +85,29 @@ const ChatDashboard = ({ domain, setDomain, onGoBack }) => {
 
   return (
     <div className="flex h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] transition-colors duration-300">
+      {/* Mobile Backdrop */}
+      {isSidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-20 md:hidden"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
+
       {/* Sidebar */}
-      <aside className="w-64 border-r border-[var(--border-color)] flex flex-col bg-[var(--bg-secondary)]">
-        <div className="p-6 border-b border-[var(--border-color)] flex items-center gap-2">
-          <div className="w-8 h-8 bg-blue-600 rounded-xl flex items-center justify-center">
-            <Zap className="w-5 h-5 text-white" />
+      <aside className={`fixed md:relative z-30 w-64 h-full border-r border-[var(--border-color)] flex flex-col bg-[var(--bg-secondary)] shrink-0 transition-transform duration-300 ease-in-out ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}>
+        <div className="p-6 border-b border-[var(--border-color)] flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-blue-600 rounded-xl flex items-center justify-center">
+              <Zap className="w-5 h-5 text-white" />
+            </div>
+            <span className="text-xl font-bold text-[var(--text-primary)]">CompanionAI</span>
           </div>
-          <span className="text-xl font-bold text-[var(--text-primary)]">CompanionAI</span>
+          <button 
+            className="md:hidden text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+            onClick={() => setIsSidebarOpen(false)}
+          >
+            <X className="w-5 h-5" />
+          </button>
         </div>
 
         <div className="p-4 space-y-1 flex-grow">
@@ -98,7 +115,7 @@ const ChatDashboard = ({ domain, setDomain, onGoBack }) => {
           {domainOptions.map((opt) => (
             <button
               key={opt.key}
-              onClick={() => { setDomain(opt.key); setMessages([]); messagesRef.current = []; }}
+              onClick={() => { setDomain(opt.key); setMessages([]); messagesRef.current = []; setIsSidebarOpen(false); }}
               className={`w-full text-left px-4 py-3 rounded-xl transition-all font-medium ${
                 domain === opt.key
                   ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20'
@@ -125,20 +142,27 @@ const ChatDashboard = ({ domain, setDomain, onGoBack }) => {
       </aside>
 
       {/* Main Chat Area */}
-      <main className="flex-grow flex flex-col relative overflow-hidden">
+      <main className="flex-grow flex flex-col relative overflow-hidden min-w-0">
         {/* Header */}
-        <header className="px-6 py-4 border-b border-[var(--border-color)] flex items-center gap-4 bg-[var(--bg-primary)]/60 backdrop-blur-xl sticky top-0 z-10">
+        <header className="px-4 md:px-6 py-4 border-b border-[var(--border-color)] flex items-center gap-2 md:gap-4 bg-[var(--bg-primary)]/60 backdrop-blur-xl sticky top-0 z-10 w-full">
+          <button
+            onClick={() => setIsSidebarOpen(true)}
+            className="md:hidden p-2 -ml-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+          >
+            <Menu className="w-5 h-5" />
+          </button>
+          
           <button
             onClick={onGoBack}
-            className="flex items-center gap-2 text-sm font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+            className="flex items-center gap-1 md:gap-2 text-xs xl:text-sm font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors whitespace-nowrap"
           >
             <ArrowLeft className="w-4 h-4" />
-            {t('chat.backToProducts')}
+            <span className="hidden sm:inline">{t('chat.backToProducts')}</span>
           </button>
-          <div className="h-5 w-px bg-[var(--border-color)]" />
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="text-sm font-bold text-[var(--text-primary)]">{domainLabel}</span>
+          <div className="h-5 w-px bg-[var(--border-color)] mx-1 md:mx-0" />
+          <div className="flex items-center gap-2 overflow-hidden">
+            <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+            <span className="text-sm font-bold text-[var(--text-primary)] truncate">{domainLabel}</span>
           </div>
         </header>
 

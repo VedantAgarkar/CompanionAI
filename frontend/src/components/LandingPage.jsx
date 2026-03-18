@@ -35,7 +35,7 @@ const LandingPage = ({ onStart, onNavigate }) => {
       <Navbar onNavigate={onNavigate} onStart={onStart} />
 
       {/* Hero Section */}
-      <section className="relative pt-20 pb-32 px-6">
+      <section className="relative pt-12 md:pt-20 pb-20 md:pb-32 px-4 md:px-6">
         <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[800px] opacity-80">
             <DarkVeil
@@ -56,16 +56,16 @@ const LandingPage = ({ onStart, onNavigate }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-6xl md:text-7xl font-bold tracking-tight mb-8">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight mb-6 md:mb-8">
               {t('landing.heroTitle1')}<span className="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">{t('landing.heroTitle2')}</span>
             </h1>
-            <p className="text-xl text-[var(--text-secondary)] leading-relaxed mb-10 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-[var(--text-secondary)] leading-relaxed mb-8 md:mb-10 max-w-2xl mx-auto">
               {t('landing.heroSub')}
             </p>
             <div className="flex justify-center">
               <button 
                 onClick={() => onNavigate('signin')}
-                className="bg-blue-600 text-white hover:bg-blue-700 px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-blue-500/20"
+                className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 md:px-8 md:py-4 rounded-xl font-bold text-base md:text-lg transition-all shadow-lg shadow-blue-500/20"
               >
                 {t('landing.launchBtn')}
               </button>
@@ -75,9 +75,9 @@ const LandingPage = ({ onStart, onNavigate }) => {
       </section>
 
       {/* Feature Grid */}
-      <section id="features" className="py-24 px-6 bg-[var(--bg-secondary)] border-y border-[var(--border-color)]">
+      <section id="features" className="py-16 md:py-24 px-4 md:px-6 bg-[var(--bg-secondary)] border-y border-[var(--border-color)]">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
             <FeatureCard 
               icon={<Rocket className="w-6 h-6 text-blue-400" />}
               title={t('landing.feature1Title')}
@@ -106,12 +106,12 @@ const LandingPage = ({ onStart, onNavigate }) => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 px-6 bg-[var(--bg-primary)]">
+      <section id="contact" className="py-16 md:py-24 px-4 md:px-6 bg-[var(--bg-primary)]">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-4xl font-bold mb-3 text-center text-[var(--text-primary)]">{t('landing.contactTitle')}</h2>
-          <p className="text-[var(--text-secondary)] mb-12 text-lg text-center">{t('landing.contactDesc')}</p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-3 text-center text-[var(--text-primary)]">{t('landing.contactTitle')}</h2>
+          <p className="text-[var(--text-secondary)] mb-8 md:mb-12 text-base md:text-lg text-center">{t('landing.contactDesc')}</p>
           
-          <form onSubmit={handleContactSubmit} className="bg-[var(--bg-secondary)] border border-[var(--border-color)] rounded-3xl p-8 md:p-10 space-y-6">
+          <form onSubmit={handleContactSubmit} className="bg-[var(--bg-secondary)] border border-[var(--border-color)] rounded-3xl p-6 md:p-10 space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label className="text-sm font-semibold text-[var(--text-primary)] ml-1">Your Name</label>
@@ -177,7 +177,7 @@ const LandingPage = ({ onStart, onNavigate }) => {
 };
 
 const FeatureCard = ({ icon, title, desc }) => (
-  <div className="p-8 rounded-2xl bg-[var(--card-bg)] backdrop-blur-sm border border-[var(--border-color)] hover:border-blue-500/30 transition-all group shadow-sm">
+  <div className="p-6 md:p-8 rounded-2xl bg-[var(--card-bg)] backdrop-blur-sm border border-[var(--border-color)] hover:border-blue-500/30 transition-all group shadow-sm">
     <div className="w-12 h-12 bg-blue-600/5 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-600/10 transition-colors">
       {icon}
     </div>

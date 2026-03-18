@@ -71,22 +71,22 @@ const FeaturesPage = ({ onNavigate, onStart }) => {
         />
       </div>
 
-      <main className="max-w-7xl mx-auto px-6 pt-20 pb-32 relative z-10">
+      <main className="max-w-7xl mx-auto px-4 md:px-6 pt-12 md:pt-20 pb-20 md:pb-32 relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 bg-gradient-to-r from-[var(--text-primary)] to-[var(--text-secondary)] bg-clip-text text-transparent">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight mb-6 bg-gradient-to-r from-[var(--text-primary)] to-[var(--text-secondary)] bg-clip-text text-transparent">
             {t('featuresPage.title')}
           </h1>
-          <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-[var(--text-secondary)] max-w-3xl mx-auto leading-relaxed">
             {t('featuresPage.subtitle')}
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {features.map((feature, index) => (
             <motion.div
               key={index}
@@ -94,9 +94,9 @@ const FeaturesPage = ({ onNavigate, onStart }) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: feature.delay }}
               whileHover={{ y: -5, scale: 1.02 }}
-              className="p-8 rounded-3xl bg-[var(--card-bg)] backdrop-blur-md border border-[var(--border-color)] hover:border-blue-500/30 transition-all group"
+              className="p-6 sm:p-8 rounded-3xl bg-[var(--card-bg)] backdrop-blur-md border border-[var(--border-color)] hover:border-blue-500/30 transition-all group"
             >
-              <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-6 group-hover:bg-blue-600/10 transition-colors">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-6 group-hover:bg-blue-600/10 transition-colors">
                 {feature.icon}
               </div>
               <h3 className="text-2xl font-bold mb-4 group-hover:text-blue-400 transition-colors">
@@ -117,15 +117,15 @@ const FeaturesPage = ({ onNavigate, onStart }) => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          className="mt-32 p-12 rounded-[32px] bg-gradient-to-br from-blue-600/20 to-emerald-600/10 border border-blue-500/20 text-center backdrop-blur-xl"
+          className="mt-20 md:mt-32 p-8 md:p-12 rounded-[32px] bg-gradient-to-br from-blue-600/20 to-emerald-600/10 border border-blue-500/20 text-center backdrop-blur-xl"
         >
-          <h2 className="text-4xl font-bold mb-6">Ready to experience these features?</h2>
-          <p className="text-lg text-[var(--text-secondary)] mb-10 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to experience these features?</h2>
+          <p className="text-base sm:text-lg text-[var(--text-secondary)] mb-10 max-w-2xl mx-auto">
             Join thousands of founders and farmers who are already using CompanionAI to transform their decision-making.
           </p>
           <button 
             onClick={onStart}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-10 py-5 rounded-2xl font-bold text-xl transition-all shadow-xl shadow-blue-500/20 active:scale-95"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 md:px-10 md:py-5 rounded-2xl font-bold text-lg md:text-xl transition-all shadow-xl shadow-blue-500/20 active:scale-95"
           >
             {t('landing.launchBtn')}
           </button>
