@@ -6,7 +6,7 @@ import axios from 'axios';
 import { useUser } from '../context/UserContext';
 import DarkVeil from './DarkVeil';
 
-const API_BASE = 'http://localhost:8000';
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
 
 const AuthPage = ({ onNavigate, initialMode = 'signin' }) => {
   const { t } = useTranslation();
