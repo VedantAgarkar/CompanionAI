@@ -118,7 +118,7 @@ const Navbar = ({ onNavigate, onStart }) => {
         <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
           <Zap className="w-5 h-5 text-white" />
         </div>
-        <span className="text-2xl md:text-3xl font-bold tracking-tight text-[var(--text-primary)]">CompanionAI</span>
+        <span className="text-xl sm:text-2xl md:text-3xl hidden min-[400px]:block font-bold tracking-tight text-[var(--text-primary)]">CompanionAI</span>
         </div>
       </div>
 
@@ -145,7 +145,7 @@ const Navbar = ({ onNavigate, onStart }) => {
             className="flex items-center gap-1 sm:gap-2 bg-[var(--bg-secondary)] backdrop-blur-md border border-[var(--border-color)] rounded-xl px-2 sm:px-4 py-2 hover:border-blue-500/50 transition-all group"
           >
             <Globe className="w-4 h-4 sm:w-5 sm:h-5 text-[var(--text-secondary)] group-hover:text-blue-400 transition-colors" />
-            <span className="text-sm sm:text-base font-semibold text-[var(--text-secondary)]">{currentLanguageLabel}</span>
+            <span className="hidden sm:inline text-sm sm:text-base font-semibold text-[var(--text-secondary)]">{currentLanguageLabel}</span>
             <ChevronDown className={`w-3 h-3 sm:w-4 sm:h-4 text-[var(--text-secondary)] transition-transform duration-300 ${isLangOpen ? 'rotate-180' : ''}`} />
           </button>
 
@@ -220,7 +220,7 @@ const Navbar = ({ onNavigate, onStart }) => {
         ) : (
           <button 
             onClick={() => onNavigate('signin')}
-            className="bg-blue-600 hover:bg-blue-700 px-7 py-2.5 rounded-full font-bold text-base transition-all shadow-lg shadow-blue-500/20 text-white active:scale-95"
+            className="bg-blue-600 hover:bg-blue-700 px-4 py-2 sm:px-7 sm:py-2.5 rounded-full font-bold text-sm sm:text-base transition-all shadow-lg shadow-blue-500/20 text-white active:scale-95 whitespace-nowrap"
           >
             {t('nav.signIn')}
           </button>
