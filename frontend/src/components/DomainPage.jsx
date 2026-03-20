@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { useUser } from '../context/UserContext';
@@ -9,26 +9,31 @@ import {
   Bot 
 } from 'lucide-react';
 import Navbar from './Navbar';
+import AuthPromptModal from './AuthPromptModal';
 
 const DomainPage = ({ onSelect, onNavigate, onStart }) => {
   const { t } = useTranslation();
   const { user } = useUser();
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [modalContent, setModalContent] = useState({ title: '', message: '' });
 
   useEffect(() => {
     if (!user) {
-      const confirmLogin = window.confirm("Please login to access all the resources. Go to login?");
-      if (confirmLogin) {
-        onNavigate('signin');
-      }
+      setModalContent({
+        title: "Authentication Required",
+        message: "Please login to access all the resources securely."
+      });
+      setShowAuthModal(true);
     }
-  }, [user, onNavigate]);
+  }, [user]);
 
   const handleSelect = (domainName) => {
     if (!user) {
-      const login = window.confirm("You must be logged in to access the bot. Go to sign in?");
-      if (login) {
-        onNavigate('signin');
-      }
+      setModalContent({
+        title: "Bot Access Restricted",
+        message: "You must be logged in to access the CompanionAI bot. Go to sign in?"
+      });
+      setShowAuthModal(true);
       return;
     }
     onSelect(domainName);
@@ -129,6 +134,14 @@ const DomainPage = ({ onSelect, onNavigate, onStart }) => {
           </div>
         </div>
       </div>
+
+      <AuthPromptModal 
+        isOpen={showAuthModal}
+        onClose={() => setShowAuthModal(false)}
+        onConfirm={() => { setShowAuthModal(false); onNavigate('signin'); }}
+        title={modalContent.title}
+        message={modalContent.message}
+      />
     </div>
   );
 };

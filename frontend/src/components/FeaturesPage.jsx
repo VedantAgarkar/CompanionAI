@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { useUser } from '../context/UserContext';
@@ -13,19 +13,18 @@ import {
 } from 'lucide-react';
 import Navbar from './Navbar';
 import DarkVeil from './DarkVeil';
+import AuthPromptModal from './AuthPromptModal';
 
 const FeaturesPage = ({ onNavigate, onStart }) => {
   const { t } = useTranslation();
   const { user } = useUser();
+  const [showAuthModal, setShowAuthModal] = useState(false);
 
   useEffect(() => {
     if (!user) {
-      const confirmLogin = window.confirm("Please sign in to view features. Go to sign in?");
-      if (confirmLogin) {
-        onNavigate('signin');
-      }
+      setShowAuthModal(true);
     }
-  }, [user, onNavigate]);
+  }, [user]);
 
   const features = [
     {
@@ -142,6 +141,14 @@ const FeaturesPage = ({ onNavigate, onStart }) => {
           </button>
         </motion.div>
       </main>
+
+      <AuthPromptModal 
+        isOpen={showAuthModal}
+        onClose={() => setShowAuthModal(false)}
+        onConfirm={() => { setShowAuthModal(false); onNavigate('signin'); }}
+        title="Authentication Required"
+        message="Please sign in to view features and unlock the full potential of CompanionAI."
+      />
     </div>
   );
 };
