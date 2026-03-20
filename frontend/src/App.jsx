@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { ThemeProvider } from './context/ThemeContext'
-import { UserProvider } from './context/UserContext'
+import { UserProvider, useUser } from './context/UserContext'
 import LandingPage from './components/LandingPage'
 import ChatDashboard from './components/ChatDashboard'
 import DomainPage from './components/DomainPage'
@@ -10,6 +10,7 @@ import AuthPage from './components/AuthPage'
 import AdminDashboard from './components/AdminDashboard'
 
 function AppContent() {
+  const { user } = useUser();
   const [view, setView] = useState('landing'); // 'landing', 'features', 'domains', 'about', 'signin', 'signup', 'admin', 'chat'
   const [domain, setDomain] = useState('general');
 
@@ -45,6 +46,10 @@ function AppContent() {
 
   if (view === 'domains') {
     return <DomainPage onSelect={selectDomain} onNavigate={setView} onStart={startApp} />;
+  }
+
+  if (view === 'chat' && !user) {
+    return <AuthPage onNavigate={setView} initialMode="signin" />;
   }
 
   return <ChatDashboard domain={domain} setDomain={setDomain} onGoBack={() => setView('domains')} />;

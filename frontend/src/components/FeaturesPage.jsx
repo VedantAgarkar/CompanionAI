@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import { useUser } from '../context/UserContext';
 import { 
   Zap, 
   Globe, 
@@ -15,6 +16,16 @@ import DarkVeil from './DarkVeil';
 
 const FeaturesPage = ({ onNavigate, onStart }) => {
   const { t } = useTranslation();
+  const { user } = useUser();
+
+  useEffect(() => {
+    if (!user) {
+      const confirmLogin = window.confirm("Please sign in to view features. Go to sign in?");
+      if (confirmLogin) {
+        onNavigate('signin');
+      }
+    }
+  }, [user, onNavigate]);
 
   const features = [
     {

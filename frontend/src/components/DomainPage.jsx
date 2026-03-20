@@ -1,11 +1,38 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { Briefcase, Rocket, Sprout, Bot } from 'lucide-react';
+import { useUser } from '../context/UserContext';
+import { 
+  Briefcase, 
+  Rocket, 
+  Sprout, 
+  Bot 
+} from 'lucide-react';
 import Navbar from './Navbar';
 
 const DomainPage = ({ onSelect, onNavigate, onStart }) => {
   const { t } = useTranslation();
+  const { user } = useUser();
+
+  useEffect(() => {
+    if (!user) {
+      const confirmLogin = window.confirm("Please login to access all the resources. Go to login?");
+      if (confirmLogin) {
+        onNavigate('signin');
+      }
+    }
+  }, [user, onNavigate]);
+
+  const handleSelect = (domainName) => {
+    if (!user) {
+      const login = window.confirm("You must be logged in to access the bot. Go to sign in?");
+      if (login) {
+        onNavigate('signin');
+      }
+      return;
+    }
+    onSelect(domainName);
+  };
 
   const domains = [
     {
@@ -92,7 +119,7 @@ const DomainPage = ({ onSelect, onNavigate, onStart }) => {
 
                 {/* Action Button */}
                 <button
-                  onClick={() => onSelect(domain.domain)}
+                  onClick={() => handleSelect(domain.domain)}
                   className="mt-auto w-full py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl font-bold transition-all shadow-lg shadow-blue-500/20 active:scale-95"
                 >
                   {t('domains.launch')} {domain.title.split(' ')[0]}
