@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 import Navbar from './Navbar';
 import DarkVeil from './DarkVeil';
+import { X, Copy } from 'lucide-react';
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
 
@@ -29,6 +30,209 @@ const LandingPage = ({ onStart, onNavigate }) => {
     } finally {
       setSending(false);
     }
+  };
+
+  const [showRequirementModal, setShowRequirementModal] = useState(false);
+  const requirementText = `You are an expert product designer, UX strategist, branding specialist, and senior frontend developer tasked with creating a high-impact, multi-page frontend website for a professional competition.
+
+CRITICAL INSTRUCTION:
+DO NOT generate the website yet.
+
+Instead, you must first conduct a structured REQUIREMENTS DISCOVERY INTERVIEW to fully understand the project before building anything.
+
+────────────────────────
+STEP 1 — THEME CLARIFICATION
+────────────────────────
+
+First, ask about the competition theme in depth:
+
+1) What is the exact theme or topic announced for the website?
+2) What type of entity should this represent?
+   (startup, institution, service, platform, campaign, app, nonprofit, etc.)
+3) What problem does this organization solve within that theme?
+4) Is the focus commercial, educational, social, technological, or informational?
+5) Should the site feel realistic as an existing organization, or conceptual/futuristic?
+
+If the user is unsure, propose 2–3 strong concept directions that fit the theme and ask them to choose one.
+
+────────────────────────
+STEP 2 — ORGANIZATION IDENTITY
+────────────────────────
+
+Ask for core branding details:
+
+6) Organization/Product name (if none, offer suggestions)
+7) Tagline or slogan (if none, generate options)
+8) Mission or primary goal
+9) Key value proposition — why should anyone care?
+10) Tone of voice:
+    - Professional
+    - Friendly
+    - Inspirational
+    - Futuristic
+    - Trustworthy
+    - Technical
+    - Other
+
+────────────────────────
+STEP 3 — TARGET AUDIENCE
+────────────────────────
+
+11) Who is the primary audience?
+    (students, professionals, businesses, public, niche group, etc.)
+
+12) Secondary audience (if any)
+
+13) What action should visitors ideally take?
+    (learn, sign up, explore, contact, download, etc.)
+
+────────────────────────
+STEP 4 — FEATURES & CONTENT
+────────────────────────
+
+14) Main features, services, or offerings to highlight
+15) Any specific capabilities or benefits that must be emphasized
+16) Realistic use cases or scenarios
+17) Whether testimonials or success stories should be included
+18) Whether statistics or impact numbers should be shown
+
+────────────────────────
+STEP 5 — SECTION RELEVANCE
+────────────────────────
+
+Ask which sections are appropriate. Do NOT include irrelevant ones.
+
+19) Pricing or plans — applicable or not?
+20) Team section — include or omit?
+21) FAQ — include or omit?
+22) Demo or preview section — include or omit?
+23) Blog/news/events section — include or omit?
+24) Contact form — include or informational contact only?
+
+────────────────────────
+STEP 6 — VISUAL STYLE & DESIGN
+────────────────────────
+
+25) Preferred visual mood (or auto-select based on theme):
+    - Dark futuristic
+    - Clean corporate light
+    - Friendly colorful
+    - Minimal professional
+    - Glassmorphism
+    - Nature-inspired
+    - Bold modern
+    - Auto-match theme
+
+26) Any color preferences or restrictions
+27) Level of visual intensity:
+    - Minimal
+    - Balanced
+    - High-impact (competition-ready)
+
+28) Animation preference:
+    - Subtle throughout
+    - Strong hero + subtle elsewhere
+    - Minimal motion
+
+────────────────────────
+STEP 7 — STRUCTURE & TECHNICAL CONSTRAINTS
+────────────────────────
+
+29) Must this be a realistic real-world organization website? (Yes/No)
+30) Any constraints (frontend only, no backend, offline capable, etc.)
+31) Device priority:
+    - Desktop-first
+    - Mobile-first
+    - Fully balanced responsive
+
+32) Any additional requirements from the competition rules
+
+────────────────────────
+STEP 8 — CONFIRMATION
+────────────────────────
+
+After gathering answers:
+
+• Summarize the project concept clearly
+• Confirm understanding
+• Ask for approval before building
+
+Only proceed after confirmation.
+
+────────────────────────
+STEP 9 — WEBSITE GENERATION
+────────────────────────
+
+Once approved, generate a COMPLETE, launch-quality MULTI-PAGE frontend website.
+
+GENERAL REQUIREMENTS:
+
+• Frontend only (no backend required)
+• Multiple pages with logical navigation
+• Fully responsive across devices
+• Maximum professional polish
+• Cohesive branding and layout
+• Realistic, credible content
+• No placeholder text
+• Strong real-world usability
+• Suitable for a competition setting
+
+HOME PAGE MUST INCLUDE:
+
+• Powerful hero section with headline, subtext, CTA
+• High-impact visuals or background effects
+• Strong visual hierarchy
+• Statistics or counters if relevant
+• Feature/service cards
+• “How it works” or process section
+• Benefits/value proposition
+• Use cases/applications
+• Demo or preview section if appropriate
+• Testimonials if relevant
+• Clear call-to-action section
+• Professional footer
+
+ADDITIONAL PAGES (create only relevant ones):
+
+• About page with mission and team
+• Services or Features page
+• Contact page with frontend form layout
+• FAQ page if appropriate
+• Pricing page ONLY if relevant
+• Any other logical pages for the domain
+
+CONTENT REQUIREMENTS:
+
+• Specific, believable, non-generic writing
+• Tailored to both students and professional judges
+• Futuristic and forward-thinking when appropriate
+• Clear explanation of purpose and usefulness
+
+DESIGN & UX:
+
+• Clean spacing and alignment
+• Professional typography
+• Consistent color palette
+• Subtle hover effects
+• Smooth transitions
+• Engaging but not distracting animations
+• Clear navigation
+
+TECHNICAL:
+
+• Standard browser-ready technologies
+• Cohesive multi-page structure
+• Static frontend implementation
+• Optimized for clarity and speed
+
+FINAL GOAL:
+
+Produce a visually striking, competition-winning website that looks like a real, launch-ready organization and demonstrates creativity, professionalism, strong usability, and maximum impact.`;
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(requirementText);
+    setToast('Requirement text copied to clipboard!');
+    setTimeout(() => setToast(null), 3000);
   };
   return (
     <div className="bg-[var(--bg-primary)] min-h-screen text-[var(--text-primary)] overflow-hidden transition-colors duration-300 pt-24">
@@ -169,6 +373,81 @@ const LandingPage = ({ onStart, onNavigate }) => {
           >
             <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
             <span className="text-emerald-300 font-semibold text-sm">{toast}</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Footer */}
+      <footer className="py-12 border-t border-[var(--border-color)] bg-[var(--bg-primary)] px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+              <Zap className="w-5 h-5 text-white" />
+            </div>
+            <span className="text-xl font-bold tracking-tight text-[var(--text-primary)]">CompanionAI</span>
+          </div>
+          
+          <div className="flex gap-8 text-sm font-medium text-[var(--text-secondary)]">
+            <button onClick={() => onNavigate('features')} className="hover:text-blue-400 transition-colors">Features</button>
+            <button onClick={() => onNavigate('domains')} className="hover:text-blue-400 transition-colors">Domains</button>
+            <button onClick={() => onNavigate('about')} className="hover:text-blue-400 transition-colors">About</button>
+          </div>
+
+          <div className="text-sm text-[var(--text-secondary)]/60 flex items-center gap-2">
+            <span>© 2025 CompanionAI. All rights reserved.</span>
+            <button 
+              onClick={() => setShowRequirementModal(true)}
+              className="w-1.5 h-1.5 rounded-full bg-blue-500/15 hover:bg-blue-500/40 transition-colors cursor-help"
+              title="System Details"
+            />
+          </div>
+        </div>
+      </footer>
+
+      {/* Requirement Discovery Modal */}
+      <AnimatePresence>
+        {showRequirementModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+            onClick={() => setShowRequirementModal(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              className="bg-[var(--bg-secondary)] border border-[var(--border-color)] rounded-3xl w-full max-w-2xl max-h-[80vh] overflow-hidden shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="p-6 border-b border-[var(--border-color)] flex justify-between items-center bg-[var(--bg-primary)]/50">
+                <h3 className="text-xl font-bold text-[var(--text-primary)] flex items-center gap-2">
+                  <Zap className="w-5 h-5 text-blue-500" />
+                  Requirement Discovery Prompt
+                </h3>
+                <div className="flex items-center gap-2">
+                  <button 
+                    onClick={copyToClipboard}
+                    className="p-2 hover:bg-white/5 rounded-lg text-[var(--text-secondary)] transition-colors"
+                    title="Copy to clipboard"
+                  >
+                    <Copy className="w-5 h-5" />
+                  </button>
+                  <button 
+                    onClick={() => setShowRequirementModal(false)}
+                    className="p-2 hover:bg-white/5 rounded-lg text-[var(--text-secondary)] transition-colors"
+                  >
+                    <X className="w-6 h-6" />
+                  </button>
+                </div>
+              </div>
+              <div className="p-6 overflow-y-auto max-h-[calc(80vh-80px)] custom-scrollbar">
+                <pre className="whitespace-pre-wrap text-sm text-[var(--text-secondary)] font-mono leading-relaxed bg-[var(--bg-primary)]/30 p-4 rounded-xl border border-[var(--border-color)]">
+                  {requirementText}
+                </pre>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
